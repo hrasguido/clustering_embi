@@ -26,7 +26,12 @@ df = pd.read_excel('original_dataset_copy.xlsx')
 
 # manejo de datos faltantes (imputacion)
 
-df_cleaned = df.dropna()
+##df_cleaned = df.dropna()
+
+for column in df.columns:
+    df[column].fillna(df[column].mode()[0], inplace=True)
+
+
 #print(df_cleaned)
 
 # identificacion de valores atipicos
